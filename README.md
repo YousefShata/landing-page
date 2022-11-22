@@ -6,6 +6,7 @@
 * [Descreption](#descreption)
 * [Technology](#Technology)
 * [Notes](#Notes)
+* [reference](#reference)
 
 
 ## Intruduction
@@ -19,8 +20,13 @@ The navigation's menu items are clickable ,and it link to it corresponding secti
 while scrolling the web will automatically detect which section currently on the viewpoint, and highlight it link ,and apply animation on the sections.
 ## Technology
 HTML , Css  , javascript ES6 , DOM(Document Object Mode).
-#Notes
+### Notes
 * when the number of sections overflow the navigation bar a horizontal scroll will appear to scroll through all sections.
-*The header of the section is the middle point in which the position calculation occurs
-*The current active section will be change if you skipped through half the section size from top or bottom
-*The bottom of a section is the top of the next one
+* The header of the section is the middle point in which the position calculation occurs
+* The current active section will be change if you skipped through half the section size from top or bottom
+* The bottom of a section is the top of the next one
+
+## reference
+* [W3School](https://www.w3schools.com/)
+* [MDN](https://developer.mozilla.org/en-US/)
+* [YouTube Scrolling into view](https://www.youtube.com/watch?v=23JQzsz9BlY&t=2s)
