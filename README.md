@@ -15,11 +15,11 @@
 
 Landing page is a static website that has been manipulated using DOM to be more dynamic
 
-##Requirements
+## Requirements
 
 A device with an access to an internet browser.
 
-##Files
+## Files
 
 The Project contain a CSS file named 'styles' inside the folder css ,a JS file named 'app' inside the folder js and an HTML file named 'index'
 
