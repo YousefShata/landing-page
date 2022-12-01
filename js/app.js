@@ -246,7 +246,6 @@ function pageResize(e){
   const p= document.querySelectorAll('p');
   // check if the size is for a small phone
   if(e.matches && e.media === '(max-width: 399px)'){
-    console.log(e.media);
     button.style.fontSize="10px";
     sectionLists.forEach((list)=> {
       list.style.fontSize="10px";
@@ -259,7 +258,6 @@ function pageResize(e){
 
 // check if the size is for a normal size phone
   else if(e.matches && e.media ==='(min-width: 400px) and (max-width: 599px)'){
-  console.log(e.media);
    button.style.fontSize="12px";
    sectionLists.forEach((list)=> {
      list.style.fontSize="12px";
@@ -272,7 +270,6 @@ function pageResize(e){
 
 // check if the size is for a tablet
   else if(e.matches && e.media ==='(min-width: 600px) and (max-width: 767px)'){
-    console.log(e.media);
     h2.forEach((h) => {
       h.style.fontSize="4em";
     });
@@ -284,7 +281,6 @@ function pageResize(e){
 
   // check if the size is for a desktop
   else if(e.matches && e.media ==='(min-width: 768px)'){
-    console.log(e.media);
     button.style.fontSize="16px";
     sectionLists.forEach((list)=> {
       list.style.fontSize="16px";
