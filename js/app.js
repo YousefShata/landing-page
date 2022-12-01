@@ -25,6 +25,11 @@
 let sections = document.querySelectorAll("section");
 let sectionsArray = arrayFromsection();
 const unorderedList = document.getElementById("navbar__list");
+const smallPhone = window.matchMedia('(max-width: 399px )');
+const phone = window.matchMedia('(min-width: 400px) and (max-width: 599px)')
+const tablet = window.matchMedia('(min-width: 600px) and (max-width: 767px)');
+const desktop = window.matchMedia('(min-width: 768px)');
+
 /**
  * End Global letiables
  * Start Helper Functions
@@ -127,7 +132,7 @@ function addScrolling(list) {
  *
  */
 //calling the create navigation bad funciton when the page loads
-document.addEventListener("load", createNavBar());
+document.addEventListener("load",createNavBar());
 
 // calling the create new section for button
 document.querySelector("button").addEventListener("click", function() {
@@ -149,12 +154,23 @@ function createNewSection() {
     //add a new heading
     let newHeading = document.createElement("H2");
     newHeading.textContent = `Section ${sections.length+1}`;
+    // get the font size of the other H2
+    const anotherH2 = document.querySelector("H2");
+    const h2StylesBox = window.getComputedStyle(anotherH2);
+    //apply the font size to the new heading
+    newHeading.style.fontSize=h2StylesBox.fontSize;
 
     //add a new paragraph
     let newParagraph1 = document.createElement("p");
     newParagraph1.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.";
     let newParagraph2 = document.createElement("p");
     newParagraph2.textContent = "Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non.";
+    // get the font size of the other paragraph
+    const anotherP = document.querySelector("p");
+    const pStylesBox = window.getComputedStyle(anotherP);
+    //apply the font size to the new heading
+    newParagraph1.style.fontSize=pStylesBox.fontSize;
+    newParagraph2.style.fontSize=pStylesBox.fontSize;
 
     // append the text and heading to the div
     newDiv.appendChild(newHeading);
@@ -174,11 +190,17 @@ function createNewSection() {
 
     //add a new list in the navigation bar
     const newList = document.createElement('li');
-    newList.style.margin = "10px";
     let sectionData = sectionsArray[sectionsArray.length - 1].getAttribute("data-nav");
     let sectionId = sectionsArray[sectionsArray.length - 1].getAttribute("id");
     newList.innerHTML = `<a data-list=${sectionId}>${sectionData}</a>`;
     unorderedList.appendChild(newList);
+    // get the font size of the other another list
+    const anotherList = document.querySelector("li");
+    const listStylesBox = window.getComputedStyle(anotherList);
+    //apply the font size to the new list
+    newList.style.fontSize=listStylesBox.fontSize;
+    newList.style.margin = "10px";
+
 
     //add onclick event for the new list
     let newListAnchor = newList.querySelector("li a");
@@ -197,4 +219,81 @@ for (let list of listsAnchor) {
     list.addEventListener("click", function() {
         addScrolling(list);
     });
+}
+
+//initial call to check if the device is a small phone
+pageResize(smallPhone);
+smallPhone.addListener(pageResize);
+
+//initial call to check if the device is a phone
+pageResize(phone);
+phone.addListener(pageResize);
+
+////initial call to check if the device is a tablet
+pageResize(tablet);
+tablet.addListener(pageResize);
+
+////initial call to check if the device is a desktop
+pageResize(desktop);
+desktop.addListener(pageResize);
+
+// changing the display of the page depending on the device u
+function pageResize(e){
+  const button = document.querySelector('button');
+  const sectionLists = document.querySelectorAll('li');
+  const h1= document.querySelector('h1');
+  const h2= document.querySelectorAll('h2');
+  const p= document.querySelectorAll('p');
+  // check if the size is for a small phone
+  if(e.matches && e.media === '(max-width: 399px)'){
+    console.log(e.media);
+    button.style.fontSize="10px";
+    sectionLists.forEach((list)=> {
+      list.style.fontSize="10px";
+    });
+    h2.forEach((h) => {
+      h.style.fontSize="2em";
+    });
+    h1.style.fontSize="2em";
+  }
+
+// check if the size is for a normal size phone
+  else if(e.matches && e.media ==='(min-width: 400px) and (max-width: 599px)'){
+  console.log(e.media);
+   button.style.fontSize="12px";
+   sectionLists.forEach((list)=> {
+     list.style.fontSize="12px";
+   });
+   h2.forEach((h) => {
+     h.style.fontSize="3em";
+   });
+   h1.style.fontSize="3em";
+  }
+
+// check if the size is for a tablet
+  else if(e.matches && e.media ==='(min-width: 600px) and (max-width: 767px)'){
+    console.log(e.media);
+    h2.forEach((h) => {
+      h.style.fontSize="4em";
+    });
+    p.forEach((para, i) => {
+      para.style.fontSize="18px";
+    });
+   h1.style.fontSize="5em";
+  }
+
+  // check if the size is for a desktop
+  else if(e.matches && e.media ==='(min-width: 768px)'){
+    console.log(e.media);
+    button.style.fontSize="16px";
+    sectionLists.forEach((list)=> {
+      list.style.fontSize="16px";
+    });    h2.forEach((h) => {
+      h.style.fontSize="5em";
+    });
+    p.forEach((para, i) => {
+      para.style.fontSize="18px";
+    });
+    h1.style.fontSize="7em";
+  }
 }
